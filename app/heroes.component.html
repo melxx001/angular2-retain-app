@@ -13,7 +13,9 @@
                 [class.selected]="x === selectedHero"
                 (click)="onSelect(x)"
         >
-            <span class="badge">{{x.id}}</span> {{x.name}}
+            <span class="badge">{{x.id}}</span>
+            <span>{{x.name}}</span>
+            <button class="delete" (click)="delete(x); $event.stopPropagation()">x</button>
         </li>
     </ul>
 
