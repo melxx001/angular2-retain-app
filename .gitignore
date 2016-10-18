@@ -2,7 +2,7 @@
 .idea
 _build
 typings
-app/*.js
+app/*.js*
 
 # Logs
 logs
