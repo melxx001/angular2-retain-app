@@ -1,3 +1,9 @@
+# Custom
+.idea
+_build
+typings
+app/*.js*
+
 # Logs
 logs
 *.log
