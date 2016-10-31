@@ -44,7 +44,7 @@ import { Component, Input } from '@angular/core';
         <div 
             class="icon"
             (click)="onChecked()"
-            *ngIf="showcheck"
+            *ngIf="showCheck"
         >
             <i class="material-icons">check</i>
         </div>
