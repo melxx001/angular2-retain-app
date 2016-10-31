@@ -1,7 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
+require('babel-register');
 
-var config = {
+const path = require('path');
+const webpack = require('webpack');
+
+const config = {
   cache: true,
   devtool: 'source-map',
   entry: {
