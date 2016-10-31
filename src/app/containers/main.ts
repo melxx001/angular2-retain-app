@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
         <div class="main-container">
             <app-bar></app-bar>
             <main class="main">
-            Content here
+                <notes-container></notes-container>
             </main>
         </div>
     `
