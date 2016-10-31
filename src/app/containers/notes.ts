@@ -25,7 +25,8 @@ import { Component } from '@angular/core';
 })
 export class NotesContainer {
     note = {
-        title: 'This is a note',
-        value: 'Eat some food'
+        title: 'Chores',
+        value: 'Dont\'t forget to clean up',
+        color: 'lightblue'
     }
 };
