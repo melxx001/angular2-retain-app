@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NoteService } from '../services';
+import { Store } from '../store';
 
 @Component({
     selector: 'notes-container',
@@ -32,21 +33,24 @@ import { NoteService } from '../services';
         </div>
     `
 })
-export class NotesContainer {
+export class NotesContainer implements OnDestroy {
     notes = [];
 
-    constructor(private noteService: NoteService) {
-        this.noteService.getNotes().subscribe(response => this.notes = response.data)
+    constructor(private noteService: NoteService, private store: Store) {
+        this.noteService.getNotes().subscribe(response => this.notes = response.data);
+        this.store.changes.map(data => data.notes).subscribe(notes => this.notes = notes);
+    }
+
+    ngOnDestroy() {
+        console.log('destroyed');
     }
 
     onNoteChecked(note) {
-        this.noteService.completeNote(note).subscribe(note => {
-            const i = this.notes.findIndex(localNote => localNote.id === note.id);
-            this.notes.splice(i, 1);
-        })
+        this.noteService.completeNote(note).subscribe()
     }
 
     onCreateNote(note) {
-        this.noteService.createNote(note).subscribe(note => this.notes.push(note));
+        this.noteService.createNote(note).subscribe();
     }
-};
+}
+
