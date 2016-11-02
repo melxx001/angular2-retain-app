@@ -13,9 +13,7 @@ export class ApiService {
 
     api_url: string = 'http://localhost:3500';
 
-    constructor(private  http: Http) {
-
-    }
+    constructor(private  http: Http) {}
 
     private getJson(response: Response) {
         return response.json();
@@ -33,7 +31,7 @@ export class ApiService {
     }
 
     get(path: string): Observable<any> {
-        return this.http.get(`${this.api_url}${path}`, this.headers)
+        return this.http.get(`${this.api_url}${path}`, {headers: this.headers})
             .map(this.checkForError)
             .catch(err => Observable.throw(err))
             .map(this.getJson);
@@ -47,9 +45,13 @@ export class ApiService {
     }
 
     delete(path: string): Observable<any> {
-        return this.http.delete(`${this.api_url}${path}`, this.headers)
+        return this.http.delete(`${this.api_url}${path}`, {headers: this.headers})
             .map(this.checkForError)
             .catch(err => Observable.throw(err))
             .map(this.getJson);
+    }
+
+    setHeaders(headers) {
+        Object.keys(headers).forEach(header => this.headers.set(header, headers[header]));
     }
 }
